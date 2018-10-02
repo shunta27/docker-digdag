@@ -1,0 +1,10 @@
+version: '2'
+services:
+  digdag:
+    build: .
+    container_name: digdag
+    command: server -m -b 0.0.0.0
+    volumes:
+      - ./src:/src
+    ports:
+      - "65432:65432"
