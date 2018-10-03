@@ -1,0 +1,11 @@
+in:
+{% include 'db/psql' %}
+  query: |
+      SELECT
+        *
+      FROM
+        projects
+
+{% if env.EMBULK_ENV == 'development' %}{% include 'out/stdout' %}
+{% else %}{% include 'out/null' %}
+{% endif %}

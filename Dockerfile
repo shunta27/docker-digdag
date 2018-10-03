@@ -34,11 +34,19 @@ RUN curl -o /usr/local/bin/digdag --create-dirs -L "https://dl.digdag.io/digdag-
   chmod +x /usr/local/bin/digdag
 
 # embulk
-RUN curl --create-dirs -o ~/.embulk/bin/embulk -L "https://dl.embulk.org/embulk-latest.jar" && \
+RUN curl -o ~/.embulk/bin/embulk --create-dirs -L "https://dl.embulk.org/embulk-latest.jar" && \
   chmod +x ~/.embulk/bin/embulk
 
 # path setting
 RUN echo 'export PATH=$PATH:$HOME/bin:$HOME/.embulk/bin' >> ~/.bashrc
+# embulk gem install
+RUN ~/.embulk/bin/embulk gem install embulk-input-postgresql
+
+WORKDIR /etc
+ADD conf/digdag_postgres.conf digdag_postgres.conf
+ADD conf/development.yml development.yml
+ADD entrypoint.sh entrypoint.sh
+RUN chmod +x entrypoint.sh
 
 WORKDIR /src
-ENTRYPOINT ["java", "-jar", "/usr/local/bin/digdag"]
+ENTRYPOINT ["/etc/entrypoint.sh"]

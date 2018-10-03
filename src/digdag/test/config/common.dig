@@ -1,0 +1,8 @@
+timezone: 'Asia/Tokyo'
+
+_export:
+  db_host: ${db.host}
+  db_database: ${db.database}
+  db_user: ${db.user}
+  db_password: ${db.password}
+  EMBULK_ENV: ${digdag_env}

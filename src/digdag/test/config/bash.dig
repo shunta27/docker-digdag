@@ -1,0 +1,3 @@
+_export:
+  sh:
+    shell: ['/bin/bash', '-l']

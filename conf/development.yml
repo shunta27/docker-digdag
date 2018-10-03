@@ -1,0 +1,7 @@
+embulk_root: /root/.embulk
+digdag_env: development
+db:
+  host: digdag-db
+  database: digdagdb
+  user: digdag
+  password: password
