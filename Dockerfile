@@ -41,6 +41,10 @@ RUN curl -o ~/.embulk/bin/embulk --create-dirs -L "https://dl.embulk.org/embulk-
 RUN echo 'export PATH=$PATH:$HOME/bin:$HOME/.embulk/bin' >> ~/.bashrc
 # embulk gem install
 RUN ~/.embulk/bin/embulk gem install embulk-input-postgresql
+RUN ~/.embulk/bin/embulk gem install embulk-output-postgresql
+RUN ~/.embulk/bin/embulk gem install embulk-output-command
+RUN ~/.embulk/bin/embulk gem install embulk-filter-column
+RUN ~/.embulk/bin/embulk gem install embulk-filter-eval
 
 WORKDIR /etc
 ADD conf/digdag_postgres.conf digdag_postgres.conf
