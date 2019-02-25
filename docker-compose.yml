@@ -16,6 +16,7 @@ services:
     container_name: digdag-db
     volumes:
       - digdag-db:/var/lib/postgresql/data
+      - ./src:/src
     ports:
       - "5432:5432"
     env_file: .env
